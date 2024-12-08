@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7b0c6c87c1.js" crossorigin="anonymous"></script>
+    <title>VoteRadio</title>
+</head>
+
+
+<style>
+    body {
+        background-color:#ffebf8;
+    }
+    .group{
+        margin-top: 1cm;
+    }
+</style>
+
+<body>
+
+    <h1>VoteRadio</h1>
+
+    <div class="group">
+        <h3>Currently playing</h3>
+        <table class="table table-striped" id="currentlyplaying">
+            <thead>
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Station</td><td id="current-name"></td></tr>
+                <tr><td>genres</td><td id="current-genres"></td></tr>
+                <tr><td>description</td><td id="current-descr"></td></tr>
+                <tr><td>url</td><td id="current-url"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div  class="group" id="radio">
+        <h3> Player </h3>
+
+        <audio  id="radiolink" controls autoplay muted> 
+            <source  src="https://ice4.somafm.com/sonicuniverse-128-mp3">
+            </audio>
+
+    </div>
+
+    <div id="refresh">
+        <button id="refreshbtn" class="fa-solid">Refresh</button>
+    </div>
+
+    <div id="tst">
+        <button id="tstbtn" class="fa-solid">Test</button>
+    </div>
+
+
+    
+    <div margip-top:2cm id="">
+        <h3>Available stations</h3>
+        <table class="table table-striped" id="allradios">
+            <thead>
+                <tr>
+                    <th> n </th>
+                    <th>Name</th>
+                    <th>Genres</th>
+                    <th>Description</th>
+                    <th>url</th>
+                </tr>
+            </thead>
+            <tbody id="stationsinfotbody">
+            </tbody>
+        </table>
+    </div>
+      
+    <script src="radio.js"></script>
+     
+    
+</body>
+</html>
