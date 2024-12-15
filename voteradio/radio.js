@@ -33,6 +33,20 @@ let stations = {
         "description": "",
         "url": "https://beats2dance.com/",
     },
+    "beats2dancetrance":{
+        "name":"Beats2Dance Trance",
+        "src": "https://mediaserv38.live-streams.nl:18002/trance",
+        "genres": ["trance"],
+        "description": "",
+        "url": "https://beats2dance.com/",
+    },
+    "beats2dancetechno":{
+        "name":"Beats2Dance Techno",
+        "src": " 	https://mediaserv38.live-streams.nl:18002/techno",
+        "genres": ["techno"],
+        "description": "",
+        "url": "https://beats2dance.com/",
+    },
     "happyam":{
         "name":"Happy AM",
         "src": "http://15676.cloudrad.io:9296/live",
