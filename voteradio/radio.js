@@ -6,8 +6,19 @@ const tstbtn = document.getElementById("tstbtn"); //refreshbtn id:
 let getWinnerAddress = "http://192.168.1.245/" // ip of arduino
 let currentstation = 0; // winner from arduino
 
-let stationlist = ["grolloo","beats2dancehouse","happyam","pinguinblues","pinguinfiesta","pinguinaardschok","kexp","somafmsonicuniverse","somafmraggae","somafmsoul","bbc3classical","radioswissclassic","tropicalisimasalsa","tropicalisimacumbia"];
-
+let stationlist = ["serenaderadio",
+            "beats2dancehouse",
+            "happyam",
+            "pinguinblues","pinguinfiesta","pinguinaardschok",
+            "kexp",
+            "somafmsonicuniverse","somafmraggae","somafmsoul",
+            "bbc3classical",
+            "radioswissclassic",
+            "tropicalisimasalsa","tropicalisimacumbia",
+            "grolloo",
+            "isekoi",
+            ];
+// stationlist = ["pinguinaardschok","pinguinaardschok","pinguinaardschok","pinguinaardschok","pinguinaardschok","pinguinaardschok","pinguinaardschok","pinguinaardschok","pinguinaardschok","pinguinaardschok","pinguinaardschok","pinguinaardschok","pinguinaardschok"];
 let stations = {
     "grolloo":{
         "name":"Grolloo",
@@ -95,24 +106,38 @@ let stations = {
     },
     "radioswissclassic":{
         "name":"Radio Swiss Classic",
-        "src": "https://stream.srg-ssr.ch/rsc_de/mp3_128.m3u",
+        "src": "https://stream.srg-ssr.ch/m/rsc_de/mp3_128",
         "genres": ["classical"],
         "description": "",
         "url": "https://www.radioswissclassic.ch/",
     },
     "tropicalisimasalsa":{
         "name":"Tropicalisima Salsa",
-        "src": "https://tropicalisimafm.org:8420/",
+        "src": "https://tropicalisimafm.org:8420/;",
         "genres": ["salsa"],
         "description": "",
-        "url": "https://www.tropicalisima.fm/",
+        "url": "https://www.tropicalisima.fm/;",
     },
     "tropicalisimacumbia":{
         "name":"Tropicalisima Cumbia",
-        "src": "https://tropicalisimafm.org:8440/",
+        "src": "https://tropicalisimafm.org:8440/;",
         "genres": ["cumbia"],
         "description": "",
         "url": "https://www.tropicalisima.fm/",
+    },
+    "serenaderadio":{
+        "name":"Serenade Radio",
+        "src": "https://stream.rcast.net/14861",
+        "genres": ["oldies"],
+        "description": "The music on Serenade Radio is the best in easy listening, with a nostalgic leaning. Given the preponderance of “oldies” stations these days we generally tend to steer away from the chart hits of the 60s and 70s. A great deal of the music on Serenade Radio cannot be heard anywhere else.",
+        "url": "https://www.serenade-radio.com/",
+    },
+    "isekoi":{
+        "name":"ISEKOI Radio",
+        "src": "https://isekoi-radio.com/listen/isekoi/radio.mp3",
+        "genres": ["Electronic","Dubstep","Drum and bass"],
+        "description": "",
+        "url": "https://isekoi-radio.com/public/isekoi",
     },
 }
 
