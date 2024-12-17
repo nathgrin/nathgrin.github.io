@@ -120,7 +120,7 @@ let stations = {
     },
     "bbc3classical":{
         "name":"BBC radio 3",
-        "src": "http://as-hls-ww-live.akamaized.net/pool_900/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio%3d96000.norewind.m3u8",
+        "src": "http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio=320000.m3u8",
         "genres": ["classical"],
         "description": "",
         "url": "https://www.bbc.co.uk/sounds/play/live:bbc_radio_three",
