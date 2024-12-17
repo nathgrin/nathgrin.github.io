@@ -1,9 +1,17 @@
 const radio = document.getElementById("radiolink"); //Your radio/audio id:
 
 const refreshbtn = document.getElementById("refreshbtn"); //refreshbtn id:
-const tstbtn = document.getElementById("tstbtn"); //refreshbtn id:
+const tstbtn = document.getElementById("tstbtn"); //tstbtn id:
+
+
+const submitAddressbtn = document.getElementById("submitAddressbtn"); //submitadress id:
+const defaultAddressbtn = document.getElementById("defaultAddressbtn"); //submitadress id:
+const theAddressElement = document.getElementById("address");
 
 let getWinnerAddress = "http://192.168.1.245/" // ip of arduino
+
+theAddressElement.value = getWinnerAddress;
+
 let currentstation = 0; // winner from arduino
 
 let stationlist = ["serenaderadio",
@@ -168,6 +176,17 @@ tstbtn.onclick = function(){
     console.log("TEST");
 
 
+}
+
+
+submitAddressbtn.onclick = function(){
+    getWinnerAddress = theAddressElement.value;
+    console.log("New address: ",getWinnerAddress)
+}
+defaultAddressbtn.onclick = function(){
+    getWinnerAddress = "http://192.168.1.245/";
+    theAddressElement.value = getWinnerAddress
+    console.log("Default address: ",getWinnerAddress)
 }
 
 function checkNewWinner(){

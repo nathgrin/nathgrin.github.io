@@ -12,6 +12,7 @@
 <style>
     body {
         background-color:#ffebf8;
+        font-family: "Lucida Console", "Courier New", monospace;
     }
     .group{
         margin-top: 1cm;
@@ -59,7 +60,7 @@
 
 
     
-    <div margip-top:2cm id="">
+    <div style="margin-top:1cm" id="stationlist">
         <h3>Available stations</h3>
         <table class="table table-striped" id="allradios">
             <thead>
@@ -75,9 +76,20 @@
             </tbody>
         </table>
     </div>
+
+    
+    
+    <div style="margin-top:2cm" id="addressinput">
+        Query address
+        <input type="text" id="address" />
+        <button id="submitAddressbtn" class="fa-solid">Submit</button>
+        <button id="defaultAddressbtn" class="fa-solid">Default</button>
+    </div>
       
+
+    <!-- just make sure this is called last .. -->
     <script src="radio.js"></script>
-     
+    
     
 </body>
 </html>
