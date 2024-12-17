@@ -19,7 +19,7 @@ let stationlist = ["serenaderadio",
             "happyam",
             "pinguinblues","pinguinfiesta","pinguinaardschok",
             "somafmsonicuniverse","somafmraggae","somafmsoul",
-            "bbc3classical",
+            "KCSM",
             "radioswissclassic",
             "tropicalisimasalsa","tropicalisimacumbia",
             "grolloo",
@@ -118,7 +118,7 @@ let stations = {
         "description": "Drown in the electronic sound of instrumental hiphop, future soul and liquid trap.",
         "url": "https://somafm.com/",
     },
-    "bbc3classical":{
+    "bbc3classical":{ // doesnt work
         "name":"BBC radio 3",
         "src": "http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio=320000.m3u8",
         "genres": ["classical"],
@@ -159,6 +159,13 @@ let stations = {
         "genres": ["Electronic","Dubstep","Drum and bass"],
         "description": "",
         "url": "https://isekoi-radio.com/public/isekoi",
+    },
+    "KCSM":{
+        "name":"KCSM",
+        "src": "http://ice7.securenetsystems.net/KCSM2",
+        "genres": ["Jazz"],
+        "description": "",
+        "url": "https://kcsm.org/",
     },
 }
 
