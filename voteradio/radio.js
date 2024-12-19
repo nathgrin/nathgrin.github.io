@@ -57,14 +57,14 @@ let stations = {
     },
     "beats2dancetechno":{
         "name":"Beats2Dance Techno",
-        "src": "https://mediaserv38.live-streams.nl:18002/techno",
+        "src": " 	https://mediaserv38.live-streams.nl:18002/techno",
         "genres": ["techno"],
         "description": "",
         "url": "https://beats2dance.com/",
     },
     "happyam":{
         "name":"Happy AM",
-        "src": "https://15676.cloudrad.io:9296/live",
+        "src": "http://15676.cloudrad.io:9296/live",
         "genres": ["pop"],
         "description": "",
         "url": "https://happyradionetwork.nl/",
@@ -127,7 +127,7 @@ let stations = {
     },
     "bbc3classical":{ // doesnt work
         "name":"BBC radio 3",
-        "src": "https://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio=320000.m3u8",
+        "src": "http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio=320000.m3u8",
         "genres": ["classical"],
         "description": "",
         "url": "https://www.bbc.co.uk/sounds/play/live:bbc_radio_three",
@@ -169,7 +169,7 @@ let stations = {
     },
     "KCSM":{
         "name":"KCSM",
-        "src": "https://ice7.securenetsystems.net/KCSM2",
+        "src": "http://ice7.securenetsystems.net/KCSM2",
         "genres": ["Jazz"],
         "description": "",
         "url": "https://kcsm.org/",
