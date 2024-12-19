@@ -4,22 +4,15 @@ const refreshbtn = document.getElementById("refreshbtn"); //refreshbtn id:
 const tstbtn = document.getElementById("tstbtn"); //tstbtn id:
 
 
-const BTreadWinnerbtn = document.getElementById("BTreadWinner"); //
-const BTstartNotificationsbtn = document.getElementById("BTstartNotifications"); //
-const BTstopNotificationsbtn = document.getElementById("BTstopNotifications"); //
-const BTresetbtn = document.getElementById("BTreset"); //
+const submitAddressbtn = document.getElementById("submitAddressbtn"); //submitadress id:
+const defaultAddressbtn = document.getElementById("defaultAddressbtn"); //submitadress id:
+const theAddressElement = document.getElementById("address");
 
-BTreadWinnerbtn.onclick = onBTreadWinnerButtonClick;
-BTstartNotificationsbtn.onclick = onBTstartNotificationsButtonClick;
-BTstopNotificationsbtn.onclick = onBTstopNotificationsButtonClick;
-BTresetbtn.onclick = onBTresetButtonClick;
+let getWinnerAddress = "http://192.168.1.245/" // ip of arduino
 
-const UUid = "69a513e7-ab5a-407b-b467-6444b2704cf5";
+theAddressElement.value = getWinnerAddress;
 
-
-var bluetoothDevice;
-var winnerCharacteristic;
-
+let currentstation = 0; // winner from arduino
 
 let stationlist = ["serenaderadio",
             "beats2dancehouse",
@@ -193,137 +186,24 @@ tstbtn.onclick = function(){
 }
 
 
-
-// BT functions
-function onBTreadWinnerButtonClick() {
-    return (bluetoothDevice ? Promise.resolve() : requestDevice())
-    .then(connectDeviceAndCacheCharacteristics)
-    .then(_ => {
-      console.log('Reading Winner...');
-      return winnerCharacteristic.readValue();
-    })
-    .catch(error => {
-      console.log('onreadwinner Argh! ' + error);
-    });
-  }
-
-function requestDevice() {
-console.log('Requesting any Bluetooth Device...');
-return navigator.bluetooth.requestDevice({
-    filters: [{services: [UUid]}],// <- Prefer filters to save energy & show relevant devices.
-    // acceptAllDevices: true,
-    services: [UUid]})
-.then(device => {
-    bluetoothDevice = device;
-    bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
-});
+submitAddressbtn.onclick = function(){
+    getWinnerAddress = theAddressElement.value;
+    console.log("New address: ",getWinnerAddress)
+}
+defaultAddressbtn.onclick = function(){
+    getWinnerAddress = "http://192.168.1.245/";
+    theAddressElement.value = getWinnerAddress
+    console.log("Default address: ",getWinnerAddress)
 }
 
-function connectDeviceAndCacheCharacteristics() {
-    if (bluetoothDevice.gatt.connected && winnerCharacteristic) {
-      return Promise.resolve();
-    }
-  
-    console.log('Connecting to GATT Server...');
-    return bluetoothDevice.gatt.connect()
-    .then(server => {
-      console.log('Getting Winner Service...');
-      return server.getPrimaryService(UUid);
-    })
-    .then(service => {
-      console.log('Getting Winner Level Characteristic...');
-      return service.getCharacteristic(UUid);
-    })
-    .then(characteristic => {
-      winnerCharacteristic = characteristic;
-      winnerCharacteristic.addEventListener('characteristicvaluechanged',
-          handleWinnerChanged);
-      document.querySelector('#startNotifications').disabled = false;
-      document.querySelector('#stopNotifications').disabled = true;
-    });
-  }
-
-
-  /* This function will be called when `readValue` resolves and
- * characteristic value changes since `characteristicvaluechanged` event
- * listener has been added. */
-function handleWinnerChanged(event) {
-    let winner = event.target.value.getUint8(0);
-    console.log('> Winner is ' + winner);
-    changesource(winner);
-  }
-  
-function onBTstartNotificationsButtonClick() {
-console.log('Starting Winner Notifications...');
-winnerCharacteristic.startNotifications()
-.then(_ => {
-    console.log('> Notifications started');
-    document.querySelector('#startNotifications').disabled = true;
-    document.querySelector('#stopNotifications').disabled = false;
-})
-.catch(error => {
-    console.log('onstart Argh! ' + error);
-});
-}
-
-  
-function onBTstopNotificationsButtonClick() {
-console.log('Stopping Winner Notifications...');
-winnerCharacteristic.stopNotifications()
-.then(_ => {
-    console.log('> Notifications stopped');
-    document.querySelector('#startNotifications').disabled = false;
-    document.querySelector('#stopNotifications').disabled = true;
-})
-.catch(error => {
-    console.log('onstop Argh! ' + error);
-});
-}
-
-
-function onBTresetButtonClick() {
-    if (winnerCharacteristic) {
-      winnerCharacteristic.removeEventListener('characteristicvaluechanged',
-          handleWinnerChanged);
-      winnerCharacteristic = null;
-    }
-    // Note that it doesn't disconnect device.
-    bluetoothDevice = null;
-    console.log('> Bluetooth Device reset');
-  }
-
-
-function onDisconnected() {
-    console.log('> Bluetooth Device disconnected');
-    connectDeviceAndCacheCharacteristics()
-    .catch(error => {
-        console.log('ondisconnect Argh! ' + error);
-    });
-}
-
-// Voteradio functions
-function changesource(winner){
+function checkNewWinner(){
+    console.log("Check new winner")
+    httpGetAsync(getWinnerAddress,processResponse); // had to enable the thingy
     
-    var thestation = stationlist[winner];
-
-    var thestationinfo = stations[thestation];
-
-
-    console.log("Change source:",thestation);
-    console.log(thestationinfo);
-    radio.src = thestationinfo['src'];
-
-    document.getElementById("current-name").innerHTML = thestationinfo['name'];
-    document.getElementById("current-genres").innerHTML = thestationinfo['genres'];
-    document.getElementById("current-descr").innerHTML = thestationinfo['description'];
-    document.getElementById("current-url").innerHTML = "<a href=\""+thestationinfo['url']+"\">"+thestationinfo['url']+"</a>";
-    
-
-    // refresh();
-    radio.play();
 }
+setInterval(checkNewWinner, 10000); //runs volumef function  every 100ms
 
-window.addEventListener('load', function () { // when loading page, setup stations etc
+window.addEventListener('load', function () {
 
     console.log("Radio on load");
     
@@ -347,7 +227,60 @@ window.addEventListener('load', function () { // when loading page, setup statio
     // console.log(out);
     document.getElementById("stationsinfotbody").innerHTML = out;
     
+
+
 })
+
+function httpGetAsync(theUrl, callback) // function to retrieve data from a server
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+function processResponse(responseText){
+    console.log("processResponse")
+    var parser=new DOMParser();
+    var xmlDoc=parser.parseFromString(responseText,"text/xml");
+    var winner = parseInt(xmlDoc.getElementById("winner").innerHTML);
+    
+    if (winner == currentstation){
+        console.log("same Winner",winner)
+        return true;
+    }
+
+    // console.log(responseText);
+    console.log("new Winner:", winner);
+    currentstation = winner;
+    changesource(winner);
+    return true;
+
+}
+
+function changesource(winner){
+    
+    var thestation = stationlist[winner];
+
+    var thestationinfo = stations[thestation];
+
+
+    console.log("Change source:",thestation);
+    console.log(thestationinfo);
+    radio.src = thestationinfo['src'];
+
+    document.getElementById("current-name").innerHTML = thestationinfo['name'];
+    document.getElementById("current-genres").innerHTML = thestationinfo['genres'];
+    document.getElementById("current-descr").innerHTML = thestationinfo['description'];
+    document.getElementById("current-url").innerHTML = "<a href=\""+thestationinfo['url']+"\">"+thestationinfo['url']+"</a>";
+    
+
+    // refresh();
+    radio.play();
+}
 
 
 
