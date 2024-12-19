@@ -64,7 +64,7 @@ let stations = {
     },
     "happyam":{
         "name":"Happy AM",
-        "src": "http://15676.cloudrad.io:9296/live",
+        "src": "https://15676.cloudrad.io:9296/live",
         "genres": ["pop"],
         "description": "",
         "url": "https://happyradionetwork.nl/",
@@ -127,7 +127,7 @@ let stations = {
     },
     "bbc3classical":{ // doesnt work
         "name":"BBC radio 3",
-        "src": "http://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio=320000.m3u8",
+        "src": "https://as-hls-ww-live.akamaized.net/pool_904/live/ww/bbc_radio_three/bbc_radio_three.isml/bbc_radio_three-audio=320000.m3u8",
         "genres": ["classical"],
         "description": "",
         "url": "https://www.bbc.co.uk/sounds/play/live:bbc_radio_three",
@@ -169,7 +169,7 @@ let stations = {
     },
     "KCSM":{
         "name":"KCSM",
-        "src": "http://ice7.securenetsystems.net/KCSM2",
+        "src": "https://ice7.securenetsystems.net/KCSM2",
         "genres": ["Jazz"],
         "description": "",
         "url": "https://kcsm.org/",
