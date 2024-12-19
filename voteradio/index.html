@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script src="https://kit.fontawesome.com/7b0c6c87c1.js" crossorigin="anonymous"></script>
+    
     <title>VoteRadio</title>
     <link rel="icon" type="image/x-icon" href="logo.ico">
 </head>
@@ -17,6 +19,15 @@
     .group{
         margin-top: 1cm;
     }
+
+    #allstationstable { 
+        tr:nth-child(even) {background: #fcd7ef;}
+        vertical-align: text-top;
+        text-align: left;
+        td:nth-child(4) {text-align: justify;}
+        border-collapse: collapse;
+        th, td {padding-left: 10px;padding-right: 10px}
+     }
 </style>
 
 <body>
@@ -50,11 +61,11 @@
 
     </div>
 
-    <div id="refresh">
+    <div id="refresh" hidden>
         <button id="refreshbtn" class="fa-solid">Refresh</button>
     </div>
 
-    <div id="tst">
+    <div id="tst" hidden>
         <button id="tstbtn" class="fa-solid">Test</button>
     </div>
 
@@ -62,7 +73,7 @@
     
     <div style="margin-top:1cm" id="stationlist">
         <h3>Available stations</h3>
-        <table class="table table-striped" id="allradios">
+        <table class="table table-striped" id="allstationstable">
             <thead>
                 <tr>
                     <th> n </th>

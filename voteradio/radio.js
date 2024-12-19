@@ -149,7 +149,7 @@ let stations = {
     "tropicalisimacumbia":{
         "name":"Tropicalisima Cumbia",
         "src": "https://tropicalisimafm.org:8440/;",
-        "genres": ["cumbia"],
+        "genres": ["cumbia", "salsa"],
         "description": "",
         "url": "https://www.tropicalisima.fm/",
     },
@@ -170,7 +170,7 @@ let stations = {
     "KCSM":{
         "name":"KCSM",
         "src": "http://ice7.securenetsystems.net/KCSM2",
-        "genres": ["Jazz"],
+        "genres": ["jazz"],
         "description": "",
         "url": "https://kcsm.org/",
     },
