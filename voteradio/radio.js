@@ -238,8 +238,8 @@ function connectDeviceAndCacheCharacteristics() {
       winnerCharacteristic = characteristic;
       winnerCharacteristic.addEventListener('characteristicvaluechanged',
           handleWinnerChanged);
-      document.querySelector('#startNotifications').disabled = false;
-      document.querySelector('#stopNotifications').disabled = true;
+      document.querySelector('#BTstartNotifications').disabled = false;
+      document.querySelector('#BTstopNotifications').disabled = true;
     });
   }
 
@@ -258,8 +258,8 @@ console.log('Starting Winner Notifications...');
 winnerCharacteristic.startNotifications()
 .then(_ => {
     console.log('> Notifications started');
-    document.querySelector('#startNotifications').disabled = true;
-    document.querySelector('#stopNotifications').disabled = false;
+    document.querySelector('#BTstartNotifications').disabled = true;
+    document.querySelector('#BTstopNotifications').disabled = false;
 })
 .catch(error => {
     console.log('onstart Argh! ' + error);
@@ -272,8 +272,8 @@ console.log('Stopping Winner Notifications...');
 winnerCharacteristic.stopNotifications()
 .then(_ => {
     console.log('> Notifications stopped');
-    document.querySelector('#startNotifications').disabled = false;
-    document.querySelector('#stopNotifications').disabled = true;
+    document.querySelector('#BTstartNotifications').disabled = false;
+    document.querySelector('#BTstopNotifications').disabled = true;
 })
 .catch(error => {
     console.log('onstop Argh! ' + error);
