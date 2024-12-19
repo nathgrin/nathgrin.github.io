@@ -57,7 +57,7 @@ let stations = {
     },
     "beats2dancetechno":{
         "name":"Beats2Dance Techno",
-        "src": " 	https://mediaserv38.live-streams.nl:18002/techno",
+        "src": "https://mediaserv38.live-streams.nl:18002/techno",
         "genres": ["techno"],
         "description": "",
         "url": "https://beats2dance.com/",
@@ -314,7 +314,7 @@ function changesource(winner){
     radio.src = thestationinfo['src'];
 
     document.getElementById("current-name").innerHTML = thestationinfo['name'];
-    document.getElementById("current-genres").innerHTML = thestationinfo['genres'];
+    document.getElementById("current-genres").innerHTML = thestationinfo['genres'].join(", ");
     document.getElementById("current-descr").innerHTML = thestationinfo['description'];
     document.getElementById("current-url").innerHTML = "<a href=\""+thestationinfo['url']+"\">"+thestationinfo['url']+"</a>";
     
@@ -339,7 +339,7 @@ window.addEventListener('load', function () { // when loading page, setup statio
         out += "<tr>";
         out += "<td>"+i+"</td>";
         out += "<td>"+thestationinfo['name']+"</td>";
-        out += "<td>"+thestationinfo['genres']+"</td>";
+        out += "<td>"+thestationinfo['genres'].join(", ")+"</td>";
         out += "<td>"+thestationinfo['description']+"</td>";
         out += "<td>"+"<a href=\""+thestationinfo['url']+"\">"+thestationinfo['url']+"</a>"+"</td>";
         out += "</tr>"
