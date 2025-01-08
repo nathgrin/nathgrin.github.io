@@ -177,6 +177,32 @@ tstbtn.onclick = function(){
 }
 
 
+function array_move(arr, old_index, new_index) { // From Reid at https://stackoverflow.com/questions/5306680/move-an-array-element-from-one-array-position-to-another
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing
+};
+
+
+function onRowChange(row,newInd){
+    // 1) need to check the order when creating table. 2) need to check where to change the new ind to.
+    var checkbox = row.cells[0].children[0].children[0].children[0];
+    var theKey = checkbox.name;
+    console.log(stationlist );
+    console.log(newInd);
+    console.log(row.cells[0].children[0].children[0].children[0]);
+    if (checkbox.checked){
+        array_move(stationlist,stationlist.indexOf(theKey),newInd-1);
+    }
+    console.log(stationlist );
+}
+
+
 window.addEventListener('load', function () { // when loading page, setup stations etc
 
     console.log("Radio on load");
@@ -202,7 +228,7 @@ window.addEventListener('load', function () { // when loading page, setup statio
 
         
     }
-    console.log(out);
+    // console.log(out);
     document.getElementById("stationsinfotbody").innerHTML = out;
 
     

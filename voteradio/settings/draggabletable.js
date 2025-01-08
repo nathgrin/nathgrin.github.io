@@ -1,3 +1,4 @@
+// FROM https://codepen.io/chingy/pen/Exxvpjo
 (function() {
   "use strict";
   
@@ -63,6 +64,8 @@
          row2 = currIndex > index ? row : currRow;
          
      tbody.insertBefore(row1, row2);
+     // Trigger rowchange
+     onRowChange(currRow,currIndex);
   }
     
   function moveRow(x, y) {
