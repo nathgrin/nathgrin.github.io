@@ -1,0 +1,26 @@
+
+body {
+    background-color:#ffebf8;
+    font-family: "Lucida Console", "Courier New", monospace;
+
+    margin: 10px 100px 100px 100px;
+}
+
+#content{
+    min-width: 50em;
+}
+
+.group{
+    margin-top: 1cm;
+}
+
+
+
+#allstationstable { 
+    tr:nth-child(even) {background: #fcd7ef;}
+    vertical-align: text-top;
+    text-align: left;
+    td:nth-child(4) {text-align: justify;}
+    border-collapse: collapse;
+    th, td {padding-left: 10px;padding-right: 10px}
+    }

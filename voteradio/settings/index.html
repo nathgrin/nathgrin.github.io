@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://kit.fontawesome.com/7b0c6c87c1.js" crossorigin="anonymous"></script>
+    
+    <title>VoteRadio settings</title>
+    <link rel="icon" type="image/x-icon" href="../logo.ico">
+
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <div id="content">
+
+        <img height=120px src="../logo.ico">
+        <h1>VoteRadio Settings</h1>
+
+        <div id="refresh" hidden>
+            <button id="refreshbtn" class="fa-solid">Refresh</button>
+        </div>
+
+        <div id="tst" hidden>
+            <button id="tstbtn" class="fa-solid">Test</button>
+        </div>
+
+
+
+        <div class="group">
+            <h3>Currently playing</h3>
+            <table class="table table-striped" id="currentlyplaying">
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Station</td><td id="current-name"></td></tr>
+                    <tr><td>genres</td><td id="current-genres"></td></tr>
+                    <tr><td>description</td><td id="current-descr"></td></tr>
+                    <tr><td>url</td><td id="current-url"></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- The Table -->
+        <div class="group">
+            <table id="allstationstable" class="table table-striped draggable-table">
+                <thead>
+                    <tr>
+                        <th> + </th>
+                        <th>Name</th>
+                        <th>Genres</th>
+                        <th>Description</th>
+                        <th>url</th>
+                    </tr>
+                </thead>
+                <tbody id="stationsinfotbody">
+                </tbody>
+              </table>
+        </div>
+
+    </div>
+
+    <!-- just make sure this is called last .. -->
+    <script src="./draggabletable.js"></script>
+    <script src="./settings.js"></script>
+    
+    
+</body>
+</html>

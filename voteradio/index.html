@@ -8,98 +8,89 @@
     
     <title>VoteRadio</title>
     <link rel="icon" type="image/x-icon" href="logo.ico">
+
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 
 
-<style>
-    body {
-        background-color:#ffebf8;
-        font-family: "Lucida Console", "Courier New", monospace;
-    }
-    .group{
-        margin-top: 1cm;
-    }
-
-    #allstationstable { 
-        tr:nth-child(even) {background: #fcd7ef;}
-        vertical-align: text-top;
-        text-align: left;
-        td:nth-child(4) {text-align: justify;}
-        border-collapse: collapse;
-        th, td {padding-left: 10px;padding-right: 10px}
-     }
-</style>
-
 <body>
 
-    <img height=120px src="logo.ico">
-    <h1>VoteRadio</h1>
+    <div id="content">
 
-    <div class="group">
-        <h3>Currently playing</h3>
-        <table class="table table-striped" id="currentlyplaying">
-            <thead>
-                <tr>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Station</td><td id="current-name"></td></tr>
-                <tr><td>genres</td><td id="current-genres"></td></tr>
-                <tr><td>description</td><td id="current-descr"></td></tr>
-                <tr><td>url</td><td id="current-url"></td></tr>
-            </tbody>
-        </table>
-    </div>
+        <img height=120px src="logo.ico">
+        <h1>VoteRadio</h1>
 
-    <div  class="group" id="radio">
-        <h3> Player </h3>
+        <div class="group">
+            <h3>Currently playing</h3>
+            <table class="table table-striped" id="currentlyplaying">
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Station</td><td id="current-name"></td></tr>
+                    <tr><td>genres</td><td id="current-genres"></td></tr>
+                    <tr><td>description</td><td id="current-descr"></td></tr>
+                    <tr><td>url</td><td id="current-url"></td></tr>
+                </tbody>
+            </table>
+        </div>
 
-        <audio  id="radiolink" controls autoplay muted> 
-            <source  src="https://ice4.somafm.com/sonicuniverse-128-mp3">
-            </audio>
+        <div  class="group" id="radio">
+            <h3> Player </h3>
 
-    </div>
+            <audio  id="radiolink" controls autoplay muted> 
+                <source  src="https://ice4.somafm.com/sonicuniverse-128-mp3">
+                </audio>
 
-    <div id="refresh" hidden>
-        <button id="refreshbtn" class="fa-solid">Refresh</button>
-    </div>
+        </div>
 
-    <div id="tst" hidden>
-        <button id="tstbtn" class="fa-solid">Test</button>
-    </div>
+        <div id="refresh" hidden>
+            <button id="refreshbtn" class="fa-solid">Refresh</button>
+        </div>
+
+        <div id="tst" hidden>
+            <button id="tstbtn" class="fa-solid">Test</button>
+        </div>
 
 
-    
-    <div style="margin-top:1cm" id="stationlist">
-        <h3>Available stations</h3>
-        <table class="table table-striped" id="allstationstable">
-            <thead>
-                <tr>
-                    <th> n </th>
-                    <th>Name</th>
-                    <th>Genres</th>
-                    <th>Description</th>
-                    <th>url</th>
-                </tr>
-            </thead>
-            <tbody id="stationsinfotbody">
-            </tbody>
-        </table>
-    </div>
-
-    
-    
-    <div style="margin-top:2cm" id="BTbuttons">
         
+        <div style="margin-top:1cm" id="stationlist">
+            <h3>Available stations</h3>
+            <table class="table table-striped" id="allstationstable">
+                <thead>
+                    <tr>
+                        <th> n </th>
+                        <th>Name</th>
+                        <th>Genres</th>
+                        <th>Description</th>
+                        <th>url</th>
+                    </tr>
+                </thead>
+                <tbody id="stationsinfotbody">
+                </tbody>
+            </table>
+        </div>
 
-        <button id="BTreadWinner" class="fa-solid">Read Bluetooth Device's Winner</button>
-        <button id="BTstartNotifications" disabled class="fa-solid">Start Notifications</button>
-        <button id="BTstopNotifications" disabled class="fa-solid">Stop Notifications</button>
-        <button id="BTreset" class="fa-solid">Reset Bluetooth Device</button>
+        
+        
+        <div style="margin-top:2cm" id="BTbuttons">
+            
+
+            <button id="BTreadWinner" class="fa-solid">Read Bluetooth Device's Winner</button>
+            <button id="BTstartNotifications" disabled class="fa-solid">Start Notifications</button>
+            <button id="BTstopNotifications" disabled class="fa-solid">Stop Notifications</button>
+            <button id="BTreset" class="fa-solid">Reset Bluetooth Device</button>
+
+        </div>
+        <div style="margin-top:2cm" id="Settingbuttons">
+            <input type="button" class="fa-solid" onclick="window.open('settings/index.html','_blank');" value="Settings" />
+        </div>
+      
 
     </div>
-      
 
     <!-- just make sure this is called last .. -->
     <script src="radio.js"></script>
