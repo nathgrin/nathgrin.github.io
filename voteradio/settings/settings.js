@@ -159,7 +159,6 @@ let stations = {
     },
 }
 
-let stationKeys = Object.keys(stations);
 
 function refresh(){
     window.location.reload();
@@ -172,7 +171,13 @@ refreshbtn.onclick = function(){
 }
 tstbtn.onclick = function(){
     console.log("TEST");
+}
 
+function updateShowStationlist(){
+    console.log(stationlist);
+    var listdiv = document.getElementById("showstationlist");
+
+    listdiv.innerHTML = stationlist.join(', ');
 
 }
 
@@ -185,37 +190,65 @@ function array_move(arr, old_index, new_index) { // From Reid at https://stackov
         }
     }
     arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    arr.filter(item => item);
     return arr; // for testing
 };
 
-
-function onRowChange(row,newInd){
-    // 1) need to check the order when creating table. 2) need to check where to change the new ind to.
-    var checkbox = row.cells[0].children[0].children[0].children[0];
-    var theKey = checkbox.name;
-    console.log(stationlist );
-    console.log(newInd);
-    console.log(row.cells[0].children[0].children[0].children[0]);
-    if (checkbox.checked){
-        array_move(stationlist,stationlist.indexOf(theKey),newInd-1);
+function find_checked_index_in_table(theKey){
+    // find index in table if only counting the checked.
+    var cnt = 0;
+    var table = document.getElementById("allstationstable");
+    for (var i = 1, row; row = table.rows[i]; i++) {
+        if (row.cells[0].children[0].children[0].children[0].name == theKey){break;}
+        if (row.cells[0].children[0].children[0].children[0].checked){cnt = cnt + 1;}
     }
-    console.log(stationlist );
+    return cnt
 }
+
+function onRowChange(currRow){
+    // 1) need to check the order when creating table. 2) need to check where to change the new ind to.
+    var checkbox = currRow.cells[0].children[0].children[0].children[0];
+    var theKey = checkbox.name;
+    if (checkbox.checked){
+        array_move(stationlist,stationlist.indexOf(theKey),find_checked_index_in_table(theKey));
+    }
+    updateShowStationlist();
+}
+
+function toggleCheckbox(element)
+ {
+    // element.checked = !element.checked; // this was for onchange but somehow that failed
+    if (element.checked){ // insert in stationlist
+        stationlist.splice(find_checked_index_in_table(element.name), 0, element.name);
+    } else { // rid of it
+        stationlist.splice(find_checked_index_in_table(element.name),1);
+    }
+    updateShowStationlist();
+ }
 
 
 window.addEventListener('load', function () { // when loading page, setup stations etc
 
     console.log("Radio on load");
+    updateShowStationlist();
     
     // changesource(0);
     // not allowed
     // radio.muted = !radio.muted; /
     // radio.play();
+    var stationKeys = Object.keys(stations).sort();
 
+    var theOrder = JSON.parse(JSON.stringify(stationlist));//stationlist;
+    for (let i = 0; i < stationKeys.length; i++) {
+        if(!theOrder.includes(stationKeys[i])){
+            theOrder.push(stationKeys[i])
+        }
+    }
+    // console.log(theOrder);
 
     var out = "";
-    for (let i = 0; i < stationKeys.length; i++) {
-        var theKey = stationKeys[i];
+    for (let i = 0; i < theOrder.length; i++) {
+        var theKey = theOrder[i];
         var thestationinfo = stations[theKey];
         var divlabel = "checkdiv"+theKey;
         out += "<tr>";
@@ -231,9 +264,9 @@ window.addEventListener('load', function () { // when loading page, setup statio
     // console.log(out);
     document.getElementById("stationsinfotbody").innerHTML = out;
 
-    
-    for (let i = 0; i < stationKeys.length; i++) {
-        var theKey = stationKeys[i];
+    // The checkboxes
+    for (let i = 0; i < theOrder.length; i++) {
+        var theKey = theOrder[i];
         var thestationinfo = stations[theKey];
         var divlabel = "checkdiv"+theKey;
         // and now for the checkbox..
@@ -243,6 +276,7 @@ window.addEventListener('load', function () { // when loading page, setup statio
         checkbox.type = "checkbox";    // make the element a checkbox
         checkbox.name = theKey;      // give it a name we can check on the server side
         checkbox.id = "check"+theKey;      // give it a name we can check on the server side
+        checkbox.setAttribute("onclick","toggleCheckbox(this)");
         
         if ( stationlist.includes(theKey) ){ checkbox.checked = true;
         } else { checkbox.checked = false; }

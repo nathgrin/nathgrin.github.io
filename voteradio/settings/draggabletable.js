@@ -54,6 +54,10 @@
       
       dragElem = null;
       mouseDrag = false;
+
+      // Trigger rowchange 
+      onRowChange(currRow);
+
     });    
   }
   
@@ -64,8 +68,6 @@
          row2 = currIndex > index ? row : currRow;
          
      tbody.insertBefore(row1, row2);
-     // Trigger rowchange // probably do tihs on mouseup, dont need to pass currindex anyway.
-     onRowChange(currRow,currIndex);
   }
     
   function moveRow(x, y) {
