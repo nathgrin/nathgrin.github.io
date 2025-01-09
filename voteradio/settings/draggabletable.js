@@ -64,7 +64,7 @@
          row2 = currIndex > index ? row : currRow;
          
      tbody.insertBefore(row1, row2);
-     // Trigger rowchange
+     // Trigger rowchange // probably do tihs on mouseup, dont need to pass currindex anyway.
      onRowChange(currRow,currIndex);
   }
     
