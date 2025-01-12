@@ -30,7 +30,18 @@
             <button id="tstbtn" class="fa-solid">Test</button>
         </div>
 
-        <div id="showstationlist"></div>
+        <div id="saveandexitdiv" class="group">
+            <input type="button" class="fa-solid" onclick="window.open('../index.html');" value="Back" />
+            <button id="resetbtn" class="fa-solid">Reset to defaults</button>
+        </div>
+        
+        <div id="importexportdiv" class="group">
+            <button id="exportbtn" class="fa-solid">Export</button><br>
+            <button id="importbtn" class="fa-solid">Import</button>
+            <input type="file" id="selectFiles" accept=".json" value="Import" />
+        </div>
+
+        <div id="showstationlist" class="group"></div>
 
 
         <!-- The Table -->
@@ -55,6 +66,8 @@
     <!-- just make sure this is called last .. -->
     <script src="./draggabletable.js"></script>
     <script src="./settings.js"></script>
+    <script src="../defaults.js"></script>
+    <script src="../import.js"></script>
     
     
 </body>

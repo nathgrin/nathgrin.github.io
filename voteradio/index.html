@@ -43,7 +43,7 @@
 
             <audio  id="radiolink" controls autoplay muted> 
                 <source  src="https://ice4.somafm.com/sonicuniverse-128-mp3">
-                </audio>
+            </audio>
 
         </div>
 
@@ -88,12 +88,17 @@
         <div style="margin-top:2cm" id="Settingbuttons">
             <input type="button" class="fa-solid" onclick="window.open('settings/index.html','_blank');" value="Settings" />
         </div>
-      
+        <div id="importexportdiv" class="group">
+            <button id="importbtn" class="fa-solid">Import</button>
+            <input type="file" id="selectFiles" accept=".json" value="Import" />
+        </div>
 
     </div>
 
     <!-- just make sure this is called last .. -->
     <script src="radio.js"></script>
+    <script src="defaults.js"></script>
+    <script src="import.js"></script>
     
     
 </body>
