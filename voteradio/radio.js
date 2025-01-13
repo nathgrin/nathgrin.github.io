@@ -207,7 +207,7 @@ function changesource(winner){
     
 
     // refresh();
-    radio.play();
+    // radio.play();
 }
 
 window.addEventListener('load', function () { // when loading page, setup stations etc
