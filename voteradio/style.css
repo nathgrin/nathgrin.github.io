@@ -23,4 +23,5 @@ body {
     td:nth-child(4) {text-align: justify;}
     border-collapse: collapse;
     th, td {padding-left: 10px;padding-right: 10px}
+    th {background-color: #fcd7ef;}
     }
