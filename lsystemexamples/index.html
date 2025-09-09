@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <title>L-system examples</title>
+
+</head>
+<style>
+  
+  body {
+    background-color:#ffebf8;
+    font-family: "Lucida Console", "Courier New", monospace;
+
+    margin: 10px 100px 100px 100px;
+  }
+
+  ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+    margin: 0; /* Remove margins */
+  }
+
+  img {
+    width: 100%;
+  }
+
+  
+  #maintable { 
+    tr:nth-child(even) {background: #fcd7ef;}
+    vertical-align: text-top;
+    text-align: left;
+    td:nth-child(4) {text-align: justify;}
+    border-collapse: collapse;
+    th, td {padding-left: 10px;padding-right: 10px;padding-top: 20px;}
+    th {background-color: #ffebf8;}
+    min-width: 100px;
+    max-width: 1000px;
+    }
+</style>
+<body>
+
+<h1>Voorbeelden van L-systemen</h1>
+
+<div style="max-width:1000px">
+<b>Woord vooraf:</b> Bij deze voorbeelden moet altijd nog een lengte worden gedefinieerd (hoe ver ga ja vooruit). Daarnaast moet vaak ook nog een hoek voor links-rechts draaien worden bepaald. 
+<br><br>
+</div>
+
+ <table id="maintable">
+  <tr>
+    <th style="width:45%"><h2>Uitkomst</h2></th>
+    <th style="width:45%"><h2>Regels</h2></th>
+    <th style="width:10%"><h2>Notities</h2></th>
+  </tr>
+
+  <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Binary Tree</div>
+      <img src="img/binarytree.png">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> F, G</li>
+        <li><b>Constanten:</b> [, ], +, -</li>
+        <li><b>Axioma:</b> G</li>
+        <li><b>Regels:</b> (F&rarr;FF), (G&rarr;F[+G]-G)</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>F: Ga vooruit</li>
+            <li>G: Ga vooruit</li>
+            <li>+: Draai tegen de klok in</li>
+            <li>-: Draai met de klok mee</li>
+            <li>[: Sla huidige positie op</li>
+            <li>]: Spring terug naar laatst opgeslagen positie</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url">https://en.wikipedia.org/wiki/L-system</a></td>
+  </tr> <!-- *** *** -->
+
+  <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Koch Curve</div>
+      <img src="img/Square_koch_3.svg.png">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> F</li>
+        <li><b>Constanten:</b> +, -</li>
+        <li><b>Axioma:</b> F</li>
+        <li><b>Regels:</b> (F&rarr;F+F-F-F+F)</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>F: Ga vooruit</li>
+            <li>+: Draai tegen de klok in</li>
+            <li>-: Draai met de klok mee</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url">https://en.wikipedia.org/wiki/L-system</a></td>
+  </tr> <!-- *** *** -->
+
+  <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Koch Curve2</div>
+      <img src="img/kochcurve2.png">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> F</li>
+        <li><b>Constanten:</b> +, -</li>
+        <li><b>Axioma:</b> F-F-F-F</li>
+        <li><b>Regels:</b> (F&rarr;F-F+F-F-F)</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>F: Ga vooruit</li>
+            <li>+: Draai tegen de klok in</li>
+            <li>-: Draai met de klok mee</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url">https://allenpike.com/modeling-plants-with-l-systems/</a><br>Er zijn nog meer koch-curve variaties</td>
+  </tr> <!-- *** *** -->
+
+  <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Koch Snowflake</div>
+      <img src="img/kochsnowflake.png">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> F</li>
+        <li><b>Constanten:</b> +, -</li>
+        <li><b>Axioma:</b> F--F--F</li>
+        <li><b>Regels:</b> (F&rarr;F+F--F+F)</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>F: Ga vooruit</li>
+            <li>+: Draai tegen de klok in</li>
+            <li>-: Draai met de klok mee</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url"></a><br>Er zijn nog meer koch-curve variaties.<br>Normaal gesproken 60 graden hoeken, maar wat gebeurt er als je 85 graden doet?</td>
+  </tr> <!-- *** *** -->
+
+  <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Hexagonal Gosper Curve</div>
+      <img src="img/hexagonalgosper.png">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> F, G</li>
+        <li><b>Constanten:</b> +, -</li>
+        <li><b>Axioma:</b> F</li>
+        <li><b>Regels:</b> (F&rarr;F+G++G-F--FF-G+), (G&rarr;-F+GG++G+F--F-G)</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>F: Ga vooruit</li>
+            <li>G: Ga vooruit</li>
+            <li>+: Draai tegen de klok in (60 graden)</li>
+            <li>-: Draai met de klok mee (60 graden)</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url">https://allenpike.com/modeling-plants-with-l-systems/</a></td>
+  </tr> <!-- *** *** -->
+
+  <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Sierpinsky driehoek</div>
+      <img src="img/sierpinskytriangle.png">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> F, G</li>
+        <li><b>Constanten:</b> +, -</li>
+        <li><b>Axioma:</b> F-G-G</li>
+        <li><b>Regels:</b> (F&rarr;F-G+F+G-F), (G&rarr;GG)</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>F: Ga vooruit</li>
+            <li>G: Ga vooruit</li>
+            <li>+: Draai tegen de klok in</li>
+            <li>-: Draai met de klok mee</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url">https://en.wikipedia.org/wiki/L-system</a><br> Er is ook een andere regel die de driehoek maakt!</td>
+  </tr> <!-- *** *** -->
+
+  <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Sierpinsky arrowhead</div>
+      <img src="img/sierpinskyarrowhead.png">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> F, G</li>
+        <li><b>Constanten:</b> +, -</li>
+        <li><b>Axioma:</b> F</li>
+        <li><b>Regels:</b> (F&rarr;G-F-G), (G&rarr;F+G+F)</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>F: Ga vooruit</li>
+            <li>G: Ga vooruit</li>
+            <li>+: Draai tegen de klok in</li>
+            <li>-: Draai met de klok mee</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url">https://en.wikipedia.org/wiki/L-system</a></td>
+  </tr> <!-- *** *** -->
+
+  <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Dragon curve</div>
+      <img src="img/dragoncurve.png">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> F, G</li>
+        <li><b>Constanten:</b> +, -</li>
+        <li><b>Axioma:</b> F</li>
+        <li><b>Regels:</b> (F&rarr;F+G), (G&rarr;F-G)</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>F: Ga vooruit</li>
+            <li>G: Ga vooruit</li>
+            <li>+: Draai tegen de klok in</li>
+            <li>-: Draai met de klok mee</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url">https://en.wikipedia.org/wiki/L-system</a></td>
+  </tr> <!-- *** *** -->
+
+  <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Minkowski Island</div>
+      <img src="img/Minkowski_Island_Series-768x989.jpg">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> F</li>
+        <li><b>Constanten:</b> +, -</li>
+        <li><b>Axioma:</b> F</li>
+        <li><b>Regels:</b> (F&rarr;F+F−F−FF+F+F−F)</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>F: Ga vooruit</li>
+            <li>+: Draai tegen de klok in</li>
+            <li>-: Draai met de klok mee</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url">http://a-d-c.ca/more-l-system-fractal-fun/</a></td>
+  </tr> <!-- *** *** -->
+
+  <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Fractal plant</div>
+      <img src="img/Fractal-plant.svg.png">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> X, F</li>
+        <li><b>Constanten:</b> +, -, [, ]</li>
+        <li><b>Axioma:</b> -X</li>
+        <li><b>Regels:</b> (X&rarr;F+[[X]-X]-F[-FX]+X), (F&rarr;FF)</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>X: Doe niks</li>
+            <li>F: Ga vooruit</li>
+            <li>+: Draai tegen de klok in (25 graden)</li>
+            <li>-: Draai met de klok mee (25 graden)</li>
+            <li>[: Sla huidige positie op</li>
+            <li>]: Spring terug naar laatst opgeslagen positie</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url">https://en.wikipedia.org/wiki/L-system</a></td>
+  </tr> <!-- *** *** -->
+
+    <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Boom 1 &amp; 2</div>
+      <img src="img/boom12.png">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> F</li>
+        <li><b>Constanten:</b> +, -, [, ]</li>
+        <li><b>Axioma:</b> F</li>
+        <li><b>Regels:</b> (F&rarr;F[+F]F[-F]F) of (F&rarr;FF-[-F+F+F]+[+F-F-F])</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>F: Ga vooruit</li>
+            <li>+: Draai tegen de klok in</li>
+            <li>-: Draai met de klok mee</li>
+            <li>[: Sla huidige positie op</li>
+            <li>]: Spring terug naar laatst opgeslagen positie</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url">https://allenpike.com/modeling-plants-with-l-systems/</a></td>
+  </tr> <!-- *** *** -->
+
+    <tr> <!-- *** *** -->
+    <td>
+      <div class="systemname">Boom 3</div>
+      <img src="img/boom3.png">
+    </td>
+    <td>
+       <ul class="no-bullets">
+        <li><b>Variabelen:</b> X, F</li>
+        <li><b>Constanten:</b> +, -, [, ]</li>
+        <li><b>Axioma:</b> X</li>
+        <li><b>Regels:</b> (X&rarr;F[+X]F[-X]+X) of (F&rarr;FF)</li>
+        <li><b>Uitvoer:</b>
+          <ul class="no-bullets">
+            <li>X: Doe niks</li>
+            <li>F: Ga vooruit</li>
+            <li>+: Draai tegen de klok in</li>
+            <li>-: Draai met de klok mee</li>
+            <li>[: Sla huidige positie op</li>
+            <li>]: Spring terug naar laatst opgeslagen positie</li>
+          </ul>
+        </li>
+       </ul> 
+    </td>
+    <td><a href="url">https://allenpike.com/modeling-plants-with-l-systems/</a></td>
+  </tr> <!-- *** *** -->
+
+
+</table> 
+
+
+
+</body>
+</html>
